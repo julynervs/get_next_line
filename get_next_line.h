@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:06:44 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/13 16:23:47 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/13 19:34:18 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*get_next_line(int fd);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
