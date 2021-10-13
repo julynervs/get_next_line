@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/13 19:28:00 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/13 19:30:37 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_next_line(int fd)
 	buffer = malloc(sizeof(char)*(BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	bytes_read = read_file(fd, *buffer, *buffer_backup, *line);
+	bytes_read = read_file(fd, buffer, buffer_backup, line);
 	if (!line && !bytes_read)
 		return (NULL);
 	return (line);
