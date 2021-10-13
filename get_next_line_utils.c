@@ -6,34 +6,49 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/13 16:36:38 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/13 16:47:30 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *str)
-{
-	int	n;
-
-	n = 0;
-	while (str[n] != '\0')
-		n++;
-	return (n);
-}
 
 char	*ft_strdup(const char *s)
 {
 	size_t	len;
 	char	*copy;
 
-	len = ft_strlen(s) + 1;
+	len = 0;
+	while (s[len] != '\0')
+		len++;
 	copy = malloc(sizeof(char) * len);
 	if (!copy && !s)
 		return (NULL);
 	while (len--)
 		*copy++ = *s++;
 	return (copy);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+
+	if (!dst || !src)
+		return (0);
+	i = 0;
+	if (dstsize > 0)
+	{
+		while (src[i] != '\0' && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
 char	*ft_substr(char const *str, unsigned int start, size_t len)
@@ -44,7 +59,9 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 
 	if (str)
 	{
-		str_len = ft_strlen(str);
+		str_len = 0;
+		while (str[str_len] != '\0')
+			str_len++;
 		sub_len = len;
 		if (start >= str_len)
 			return (ft_strdup(""));
