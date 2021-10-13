@@ -6,11 +6,35 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/10 22:19:20 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/13 16:36:38 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *str)
+{
+	int	n;
+
+	n = 0;
+	while (str[n] != '\0')
+		n++;
+	return (n);
+}
+
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*copy;
+
+	len = ft_strlen(s) + 1;
+	copy = malloc(sizeof(char) * len);
+	if (!copy && !s)
+		return (NULL);
+	while (len--)
+		*copy++ = *s++;
+	return (copy);
+}
 
 char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
@@ -26,7 +50,7 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 			return (ft_strdup(""));
 		else if (start + len >= str_len)
 			sub_len = str_len - start;
-		substr = ft_calloc(sub_len + 1, sizeof(char));
+		substr = malloc((sub_len + 1) * sizeof(char));
 		if (!substr)
 			return (NULL);
 		ft_strlcpy(substr, (str + start), sub_len + 1);
@@ -45,30 +69,6 @@ char	*ft_strchr(const char *s, int c)
 	if (*s == cc || cc == '\0')
 		return ((char *)s);
 	return (0);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	len;
-	char	*copy;
-
-	len = ft_strlen(s) + 1;
-	copy = malloc(sizeof(char) * len);
-	if (!copy && !s)
-		return (NULL);
-	while (len--)
-		*copy++ = *s++;
-	return (copy);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	int	n;
-
-	n = 0;
-	while (str[n] != '\0')
-		n++;
-	return (n);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
