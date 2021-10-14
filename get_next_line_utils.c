@@ -6,11 +6,21 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/13 19:39:57 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/14 00:58:44 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *str)
+{
+	int	n;
+
+	n = 0;
+	while (str[n] != '\0')
+		n++;
+	return (n);
+}
 
 char	*ft_strdup(const char *s)
 {
@@ -28,34 +38,12 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	if (!dst || !src)
-		return (0);
-	i = 0;
-	if (dstsize > 0)
-	{
-		while (src[i] != '\0' && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
 char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	str_len;
 	size_t	sub_len;
+	size_t	i;
 
 	if (str)
 	{
@@ -70,7 +58,13 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 		substr = malloc((sub_len + 1) * sizeof(char));
 		if (!substr)
 			return (NULL);
-		ft_strlcpy(substr, (str + start), sub_len + 1);
+		i = 0;
+		while (str[start + i] && i < len)
+		{
+			substr[i] = str[start + i];
+			i++;
+		}
+		substr[i] = '\0';
 		return (substr);
 	}
 	return (NULL);

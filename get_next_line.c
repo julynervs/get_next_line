@@ -6,56 +6,61 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/13 19:33:11 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:05:48 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*get_line(char **buffer_backup, char **line)
-{
-	int	i;
-	char *new_backup;
-
-	i = 0;
-	while ((*buffer_backup)[i] != '\n' && (*buffer_backup)[i] != '\0')
-		i++;
-	if ((*buffer_backup)[i] == '\n')
-	{
-		i++;
-		*line = ft_substr(*buffer_backup, 0, i);
-		new_backup = ft_strdup(*buffer_backup + i);
-	}
-	else
-		*line = ft_strdup(*buffer_backup);
-	free(*buffer_backup);
-	return (new_backup);
-}
-
-static int	read_file(int fd, char **buffer, char **buffer_backup, char **line)
+static char	*make_buffer_backup(int fd, char *buffer, char *buffer_backup)
 {
 	int		bytes_read;
 	char	*temp;
 
-	bytes_read = 1;
-	while ((!ft_strchr(*buffer_backup, '\n')) && bytes_read)
+	while ((ft_strchr(buffer, '\n') == NULL) && bytes_read)
 	{
-		bytes_read = read(fd, *buffer, BUFFER_SIZE);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-			return (bytes_read);
-		(*buffer)[bytes_read] = '\0';
-		temp = *buffer_backup;
-		*buffer_backup = ft_strjoin(temp, *buffer);
-		free(temp);
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[bytes_read] = '\0';
+		temp = buffer_backup;
+		buffer_backup = ft_strjoin(temp, buffer);
 	}
-	free(*buffer);
-	*buffer_backup = get_line(buffer_backup, line);
-	if (**line == '\0')
+	free(temp);
+	return (buffer_backup);
+}
+
+static char	*make_line(char *buffer_backup)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
+		i++;
+	line = ft_substr(buffer_backup, 0, i);
+	if (line[0] == '\0')
 	{
-		free (*line);
-		*line = NULL;
+		free(line);
+		return (NULL);
 	}
-	return (bytes_read);
+	return (line);
+}
+
+static char	make_new_backup(char *buffer_backup)
+{
+	char	*new_backup;
+	int		i;
+
+	i = 0;
+	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
+		i++;
+	new_backup = ft_substr(buffer_backup, i + 1, ft_strlen(buffer_backup) - i);
+	free(buffer_backup);
+	return (new_backup);
 }
 
 char	*get_next_line(int fd)
@@ -69,9 +74,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = malloc(sizeof(char)*(BUFFER_SIZE + 1));
 	if (!buffer)
+	{
+		free(buffer);
 		return (NULL);
-	bytes_read = read_file(fd, &buffer, &buffer_backup, &line);
-	if (!line && !bytes_read)
+	}
+	buffer_backup = make_buffer_backup(fd, buffer, buffer_backup);
+	if (!buffer_backup)
 		return (NULL);
+	line = get_line();
+	buffer_backup = make_new_backup();
 	return (line);
 }
