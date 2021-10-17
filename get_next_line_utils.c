@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/17 18:09:50 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:27:59 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new = (char *)malloc(sizeof(char) * (i + j + 1));
 	if (!new)
 		return (NULL);
-	ft_strlcpy(&new[0], s1, i + 1);
-	ft_strlcpy(&new[i], s2, i + j + 1);
+	ft_strlcpy(&new[0], (char *)s1, i + 1);
+	ft_strlcpy(&new[i], (char *)s2, i + j + 1);
 	return (new);
 }
