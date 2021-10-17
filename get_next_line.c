@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/17 18:36:33 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:37:38 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		if (!backup)
-			backup = ft_strdup("");
+		if (!buffer_backup)
+			buffer_backup = ft_strdup("");
 		temp = buffer_backup;
 		buffer_backup = ft_strjoin(temp, buffer);
 	}
