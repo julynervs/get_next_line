@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/17 18:30:48 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:36:33 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
+		if (!backup)
+			backup = ft_strdup("");
 		temp = buffer_backup;
 		buffer_backup = ft_strjoin(temp, buffer);
 	}
@@ -57,11 +59,13 @@ static char	*make_new_backup(char *buffer_backup)
 	int		i;
 	int		len_copy;
 
-	new_backup = NULL;
 	i = 0;
+	len_copy = ft_strlen(buffer_backup) - i + 1;
+	new_backup = malloc(sizeof(char *) * len_copy);
+	if (!new_backup)
+		return (NULL);
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
-	len_copy = ft_strlen(buffer_backup) - i + 1;
 	ft_strlcpy(new_backup, buffer_backup + i + 1, len_copy);
 	free(buffer_backup);
 	return (new_backup);
