@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/14 00:58:44 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:09:50 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,27 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+int	ft_strlcpy(char *dest, char *src, int size)
 {
-	char	*substr;
-	size_t	str_len;
-	size_t	sub_len;
-	size_t	i;
+	int	i;
 
-	if (str)
+	i = 0;
+	if (size == 0)
 	{
-		str_len = 0;
-		while (str[str_len] != '\0')
-			str_len++;
-		sub_len = len;
-		if (start >= str_len)
-			return (ft_strdup(""));
-		else if (start + len >= str_len)
-			sub_len = str_len - start;
-		substr = malloc((sub_len + 1) * sizeof(char));
-		if (!substr)
-			return (NULL);
-		i = 0;
-		while (str[start + i] && i < len)
-		{
-			substr[i] = str[start + i];
+		while (src[i])
 			i++;
-		}
-		substr[i] = '\0';
-		return (substr);
+		return (i);
 	}
-	return (NULL);
+	while (i < size - 1 && src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (i < size)
+		dest[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
