@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/17 18:27:12 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:30:48 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static char	*get_line(char *buffer_backup)
 	char	*line;
 	int		i;
 
+	line = NULL;
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
@@ -50,12 +51,13 @@ static char	*get_line(char *buffer_backup)
 	return (line);
 }
 
-static char	make_new_backup(char *buffer_backup)
+static char	*make_new_backup(char *buffer_backup)
 {
 	char	*new_backup;
 	int		i;
 	int		len_copy;
 
+	new_backup = NULL;
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
