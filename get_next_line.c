@@ -6,13 +6,13 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/14 01:05:48 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 17:41:11 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*make_buffer_backup(int fd, char *buffer, char *buffer_backup)
+static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 {
 	int		bytes_read;
 	char	*temp;
@@ -33,7 +33,7 @@ static char	*make_buffer_backup(int fd, char *buffer, char *buffer_backup)
 	return (buffer_backup);
 }
 
-static char	*make_line(char *buffer_backup)
+static char	*get_line(char *buffer_backup)
 {
 	char	*line;
 	int		i;
@@ -78,10 +78,10 @@ char	*get_next_line(int fd)
 		free(buffer);
 		return (NULL);
 	}
-	buffer_backup = make_buffer_backup(fd, buffer, buffer_backup);
+	buffer_backup = get_buffer_backup(fd, buffer, buffer_backup);
 	if (!buffer_backup)
 		return (NULL);
-	line = get_line();
-	buffer_backup = make_new_backup();
+	line = get_line(buffer_backup);
+	buffer_backup = make_new_backup(buffer_backup);
 	return (line);
 }
