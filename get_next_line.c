@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/17 18:15:15 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:27:12 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*get_line(char *buffer_backup)
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
-	line = ft_strlcpy(line, buffer_backup, i + 1);
+	ft_strlcpy(line, buffer_backup, i + 1);
 	if (line[0] == '\0')
 	{
 		free(line);
@@ -60,7 +60,7 @@ static char	make_new_backup(char *buffer_backup)
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
 	len_copy = ft_strlen(buffer_backup) - i + 1;
-	new_backup = ft_strlcpy(new_backup, buffer_backup + i + 1, len_copy);
+	ft_strlcpy(new_backup, buffer_backup + i + 1, len_copy);
 	free(buffer_backup);
 	return (new_backup);
 }
@@ -69,7 +69,6 @@ char	*get_next_line(int fd)
 {
 	char		*buffer;
 	static char	*buffer_backup;
-	int			bytes_read;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
