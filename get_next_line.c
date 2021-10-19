@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/19 11:44:34 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/19 11:49:37 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static char	*get_line(char *buffer_backup)
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 1));
+	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, buffer_backup, i + 1);
+	ft_strlcpy(line, buffer_backup, i + 2);
 	if (line[0] == '\0')
 	{
 		free(line);
