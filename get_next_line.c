@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/19 11:52:55 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/19 11:57:34 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	*make_new_backup(char *buffer_backup)
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
-	if (buffer_backup[i] == '\0' && buffer_backup[i] == '\n')
+	if (buffer_backup[i] == '\0')
 	{
 		free(buffer_backup);
 		return (NULL);
