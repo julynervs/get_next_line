@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/25 19:25:50 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:28:20 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*get_line(char *buffer_backup)
 	int		i;
 
 	i = 0;
-	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
+	while (buffer_backup[i] && buffer_backup[i] != '\n')
 		i++;
 	line = malloc(sizeof(char) * (i + 2));
 	if (!line)
@@ -69,7 +69,7 @@ static char	*make_new_backup(char *buffer_backup)
 	int		len_copy;
 
 	i = 0;
-	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
+	while (buffer_backup[i] && buffer_backup[i] != '\n')
 		i++;
 	if (buffer_backup[i] == '\0')
 	{
