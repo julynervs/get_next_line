@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:26:48 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/25 19:39:57 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:40:55 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strdup(const char *s)
 	len = 0;
 	while (s[len] != '\0')
 		len++;
-	copy = malloc(sizeof(char) * (len + 1);
+	copy = malloc(sizeof(char) * (len + 1));
 	if (!copy && !s)
 		return (NULL);
 	copy[len] = '\0';
