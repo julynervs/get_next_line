@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/25 19:04:35 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:12:49 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 		temp = buffer_backup;
 		buffer_backup = ft_strjoin(temp, buffer);
 		free(temp);
+		if (ft_strchr(buffer, '\n'))
+			buffer = NULL;
 	}
 	free(buffer);
-	buffer = NULL;
 	return (buffer_backup);
 }
 
