@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/25 19:17:47 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:20:27 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*get_line(char *buffer_backup)
 	i = 0;
 	while (buffer_backup[i] != '\0' && buffer_backup[i] != '\n')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));
+	line = malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	ft_strlcpy(line, buffer_backup, i + 2);
@@ -76,7 +76,7 @@ static char	*make_new_backup(char *buffer_backup)
 		return (NULL);
 	}
 	len_copy = ft_strlen(buffer_backup) - i + 1;
-	new_backup = (char *)malloc(sizeof(char) * len_copy);
+	new_backup = malloc(sizeof(char) * len_copy);
 	if (!new_backup)
 		return (NULL);
 	ft_strlcpy(new_backup, buffer_backup + i + 1, len_copy);
@@ -93,7 +93,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 	{
 		free(buffer);
