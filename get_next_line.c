@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/25 19:20:27 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:25:50 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 	int		line_founded;
 
 	line_founded = 0;
+	bytes_read = 1;
 	while ((!line_founded) && bytes_read)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
