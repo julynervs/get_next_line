@@ -6,11 +6,11 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/26 10:51:16 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:01:51 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*get_buffer_backup(int fd, char *buffer, char *buffer_backup)
 {
