@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:45:29 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/26 10:01:16 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:03:24 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	*make_new_backup(char *buffer_backup)
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	static char	*buffer_backup;
+	static char	*buffer_backup[FD_MAX];
 	char		*line;
 
 	line = NULL;
@@ -99,10 +99,10 @@ char	*get_next_line(int fd)
 		free(buffer);
 		return (NULL);
 	}
-	buffer_backup = get_buffer_backup(fd, buffer, buffer_backup);
-	if (!buffer_backup)
+	buffer_backup[fd] = get_buffer_backup(fd, buffer, buffer_backup[fd]);
+	if (!buffer_backup[fd])
 		return (NULL);
-	line = get_line(buffer_backup);
-	buffer_backup = make_new_backup(buffer_backup);
+	line = get_line(buffer_backup[fd]);
+	buffer_backup[fd] = make_new_backup(buffer_backup[fd]);
 	return (line);
 }
