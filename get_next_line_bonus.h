@@ -6,20 +6,20 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:06:44 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/26 10:56:31 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:00:03 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-#ifndef FD_MAX
-# define FD_MAX 256;
-#endif
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+
+#ifndef FD_MAX
+# define FD_MAX 256;
+#endif
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
