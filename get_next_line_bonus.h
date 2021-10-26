@@ -6,12 +6,12 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:06:44 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/26 10:54:32 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:56:31 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 #ifndef FD_MAX
 # define FD_MAX 256;
