@@ -6,7 +6,7 @@
 /*   By: jurobert <jurobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:06:44 by jurobert          #+#    #+#             */
-/*   Updated: 2021/10/26 11:09:32 by jurobert         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:10:11 by jurobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stddef.h>
 
 # ifndef FD_MAX
-#define FD_MAX 256
+	#define FD_MAX 256
 # endif
 
 char	*get_next_line(int fd);
